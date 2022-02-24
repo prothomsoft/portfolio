@@ -8,7 +8,11 @@ export const loginUser = async (username, password) => {
             username : username,
             password: password
         }
-        const {data} = await axios.post(apiURL + 'login', loginDto);
+        const {data} = await axios.post(apiURL + 'login', loginDto, {
+            headers: {
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+            }});
         return data.jwt;        
     } catch (error) {
         throw error;
